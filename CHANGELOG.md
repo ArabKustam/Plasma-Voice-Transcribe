@@ -1,5 +1,7 @@
 # Changelog
 
+[Русский](CHANGELOG.ru.md)
+
 ## 1.0.1
 
 - `/vtt help` shows links to GitHub, the author's Discord (arab_kustam) and the Plasmo Voice Discord

@@ -79,7 +79,7 @@
 
 ## Настройка
 
-Настройки меняются двумя способами: в [`config.yml`](platform-paper/src/main/resources/config.yml) с последующим `/vtt reload` или прямо в игре командой `/vtt set <параметр> <значение>`, например `/vtt set subtitles.style.preset dark`. Все параметры описаны в конфиге: язык, движок и ключи API, облачка и их вид, кто их видит, тайминги, копия в чат, цифры, ники, миры, производительность и отладка. Тексты сообщений лежат в `plugins/PV-Transcribe/lang/` (английский и русский).
+Настройки меняются двумя способами: в [`config.yml`](platform-paper/src/main/resources/config.yml) с последующим `/vtt reload` или прямо в игре командой `/vtt set <параметр> <значение>`, например `/vtt set subtitles.style.preset dark`. Все параметры описаны в конфиге: язык, движок и ключи API, облачка и их вид, кто их видит, тайминги, копия в чат, цифры, ники, миры, производительность и отладка. Полный конфиг с комментариями на русском: [docs/config.ru.md](docs/config.ru.md). Тексты сообщений лежат в `plugins/PV-Transcribe/lang/` (английский и русский).
 
 ```yaml
 subtitles:
@@ -100,12 +100,49 @@ subtitles:
 
 ## Для разработчиков
 
-У PV-Transcribe и [SVC-Transcribe](https://github.com/ArabKustam/Simple-Voice-Chat-Transcribe) (Simple Voice Chat) общий API, поэтому ваш плагин работает с любым голосовым чатом без изменений. Подключите jar плагина как `compileOnly` и добавьте `softdepend: [PV-Transcribe, SVC-Transcribe]` в `plugin.yml`. Пример кода есть в [английском README](README.md#for-developers).
+У PV-Transcribe и [SVC-Transcribe](https://github.com/ArabKustam/Simple-Voice-Chat-Transcribe) (Simple Voice Chat) общий API, поэтому ваш плагин работает с любым голосовым чатом без изменений. Подключите jar плагина как `compileOnly` и добавьте `softdepend: [PV-Transcribe, SVC-Transcribe]` в `plugin.yml`.
+
+```java
+PVTranscribeApi api = PVTranscribe.get();
+
+// Живой и итоговый текст каждого игрока
+api.addListener(new TranscriptionListener() {
+    @Override public void onSpeechStart(SpeechStartEvent e) { }
+    @Override public void onPartialTranscript(Transcript t) { /* ещё говорит */ }
+    @Override public void onFinalTranscript(Transcript t) { /* фраза закончена */ }
+    @Override public void onSpeechEnd(SpeechEndEvent e) { }
+}, api.syncExecutor());
+
+// Голосовые команды
+api.phrases().register(PhraseTrigger.builder("magic:fireball")
+        .phrases("fireball", "огненный шар")
+        .mode(MatchMode.CONTAINS)
+        .matchPartial(true)                // срабатывает, не дожидаясь конца фразы
+        .executor(api.syncExecutor())      // главный поток
+        .handler(match -> {
+            Player player = Bukkit.getPlayer(match.speakerId());
+            if (player != null) player.launchProjectile(Fireball.class);
+        })
+        .build());
+
+// Модерация: изменить или скрыть текст облачка
+api.addSubtitleProcessor((transcript, text) -> text.replace("плохоеслово", "***"));
+```
+
+В `Transcript` есть говорящий, `getText()`, `getRawText()`, `getNormalizedText()` (для сравнения), `isFinal()`, `getUtteranceId()`, язык, источник голоса (`plasmovoice`) и канал голоса (`proximity`, `groups`, `broadcast`). Также в главном потоке вызываются события Bukkit: `PlayerSpeechStartEvent`, `PlayerTranscriptEvent`, `PlayerSpeechEndEvent`.
+
+| Метод / класс | Для чего |
+|---|---|
+| `PVTranscribe.get()` | Получить API (одинаково в обоих плагинах) |
+| `addListener(listener, executor)` | Начало и конец речи, промежуточный и итоговый текст |
+| `phrases().register(...)` | Реакция на слова и фразы (голосовые команды) |
+| `addSubtitleProcessor(...)` | Изменить текст облачка перед показом или скрыть его (вернуть `null`) |
+| `syncExecutor()` | Выполнять обработчики в главном потоке сервера |
 
 ## Частые вопросы
 
 **Для каких версий?**
-Paper, Spigot и Purpur 1.20.2 и новее. Проверено на 1.21.8.
+Paper, Spigot и Purpur 1.20.2 и новее (текстовые дисплеи появились в 1.19.4, плавное движение в 1.20.2). Проверено на 1.21.8.
 
 **Работает ли с Simple Voice Chat?**
 Для него есть отдельный плагин [SVC-Transcribe](https://github.com/ArabKustam/Simple-Voice-Chat-Transcribe). Ставьте только один из двух.
@@ -123,6 +160,14 @@ Paper, Spigot и Purpur 1.20.2 и новее. Проверено на 1.21.8.
 ./gradlew runServer      # тестовый сервер
 ```
 
+| Модуль | Что внутри |
+|---|---|
+| `api` | Публичный API, без зависимостей от Minecraft |
+| `core` | Сессии, потоки, облачка, обработка текста |
+| `engine-*` | Движки распознавания |
+| `voice-*` | Адаптер голосового чата |
+| `platform-paper` | Плагин Bukkit |
+
 ## Поддержка
 
 - Ошибки и идеи: [GitHub Issues](https://github.com/ArabKustam/Plasma-Voice-Transcribe/issues)
@@ -131,4 +176,4 @@ Paper, Spigot и Purpur 1.20.2 и новее. Проверено на 1.21.8.
 
 ## Лицензия
 
-[MIT](LICENSE). Сторонние компоненты: [THIRD_PARTY.md](THIRD_PARTY.md).
+[MIT](LICENSE). Сторонние компоненты: [THIRD_PARTY.md](THIRD_PARTY.md). История версий: [CHANGELOG.ru.md](CHANGELOG.ru.md).

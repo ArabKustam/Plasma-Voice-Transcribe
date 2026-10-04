@@ -167,4 +167,4 @@ No. Audio stays in memory only while it is being recognised. With a cloud engine
 
 ## License
 
-[MIT](LICENSE). Third-party components: [THIRD_PARTY.md](THIRD_PARTY.md).
+[MIT](LICENSE). Third-party components: [THIRD_PARTY.md](THIRD_PARTY.md). Version history: [CHANGELOG.md](CHANGELOG.md).
