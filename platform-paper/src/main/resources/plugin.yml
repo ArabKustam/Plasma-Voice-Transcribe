@@ -1,0 +1,52 @@
+name: PV-Transcribe
+version: '${version}'
+main: org.lavacast.pvtranscribe.paper.PVTranscribePlugin
+api-version: '1.20'
+description: Real-time speech-to-text for Plasmo Voice with subtitles above players and an API for other plugins.
+authors: [lavacast]
+softdepend: [PlasmoVoice]
+# Downloaded by Paper/Spigot from Maven Central on first start (includes native libraries for Windows, Linux x64, macOS).
+libraries:
+  - com.alphacephei:vosk:${voskVersion}
+  - com.microsoft.onnxruntime:onnxruntime:${onnxRuntimeVersion}
+
+commands:
+  pvtranscribe:
+    description: PV-Transcribe commands
+    usage: /pvtranscribe help
+    aliases: [pvt, transcribe]
+
+permissions:
+  pvtranscribe.see:
+    description: See subtitles above speaking players
+    default: true
+  pvtranscribe.transcribe:
+    description: Own speech is transcribed (subtitles and API events)
+    default: true
+  pvtranscribe.command.toggle:
+    description: Hide or show subtitles for yourself with /pvt toggle
+    default: true
+  pvtranscribe.admin:
+    description: All admin commands
+    default: op
+    children:
+      pvtranscribe.admin.reload: true
+      pvtranscribe.admin.status: true
+      pvtranscribe.admin.player: true
+      pvtranscribe.admin.world: true
+      pvtranscribe.admin.engine: true
+  pvtranscribe.admin.engine:
+    description: Switch the speech engine and language (/pvt engine, /pvt language)
+    default: op
+  pvtranscribe.admin.reload:
+    description: Reload the config (/pvt reload)
+    default: op
+  pvtranscribe.admin.status:
+    description: Show engine and load status (/pvt status)
+    default: op
+  pvtranscribe.admin.player:
+    description: Enable or disable transcription for a player (/pvt player)
+    default: op
+  pvtranscribe.admin.world:
+    description: Enable or disable transcription in a world (/pvt world)
+    default: op

@@ -1,0 +1,193 @@
+# ============================================================================
+#  PV-Transcribe - real-time speech-to-text for Plasmo Voice
+# ============================================================================
+# Apply changes with: /pvt reload
+
+config-version: 2
+
+# Master switch for transcription.
+enabled: true
+
+# Language of plugin messages: en or ru (files in plugins/PV-Transcribe/lang/, you can edit them).
+locale: en
+
+transcription:
+  # Recognition language (ISO code: en, ru, de, ...). Change in game with /pvt language <code>.
+  # The vosk engine needs a model per language (see engine.vosk.models).
+  language: en
+  # Detect the spoken language automatically (/pvt language auto).
+  # Only the cloud engines (openai, deepgram) can do this; vosk and t-one use "language".
+  auto-detect-language: false
+  # Show intermediate text while the player is still speaking.
+  partial-results: true
+  # At most one intermediate result per player per this many milliseconds.
+  partial-interval-ms: 150
+  # No audio from a player for this long = the player stopped talking.
+  silence-timeout-ms: 900
+  # A continuous phrase is force-finished after this many seconds.
+  max-phrase-seconds: 20
+  # Recognition threads (0 = automatic: half of the CPU cores, 1 to 4).
+  # Recognition never runs on the server main thread.
+  worker-threads: 0
+  # How many players can be transcribed at the same time.
+  max-concurrent-speakers: 32
+  # If recognition falls behind speech by more than this, extra audio is dropped (lag protection).
+  max-queue-ms: 3000
+  # Recognizers of silent players are freed after this many seconds.
+  idle-recognizer-close-seconds: 60
+  # Worlds without transcription. Change in game with /pvt world <world> on|off
+  disabled-worlds: []
+
+engine:
+  # Speech-to-text engine. Switch in game with /pvt engine <type>.
+  #   auto     - t-one for Russian, vosk for other languages (cloud engine if auto-detect is on and a key is set)
+  #   vosk     - offline, free, many languages; picks words from its dictionary, so rare words and names suffer
+  #   t-one    - offline, free, Russian only; writes what it hears letter by letter
+  #   deepgram - cloud (paid, new accounts get free credit); very accurate, fast, punctuation, player names as hints
+  #   openai   - cloud (paid); any language, automatic language detection, player names as hints
+  # Cloud engines send players' voice to the provider while they speak. Tell your players about it.
+  type: auto
+  deepgram:
+    # Create a key at https://console.deepgram.com
+    api-key: ""
+    model: nova-3
+    # Pause (ms) after which Deepgram finishes the phrase.
+    endpointing-ms: 500
+    # Send names of online players as keyterms so they are spelled correctly.
+    player-names-as-keyterms: true
+  openai:
+    # Create a key at https://platform.openai.com/api-keys
+    api-key: ""
+    # Transcription model (see the OpenAI Realtime transcription docs).
+    model: gpt-live-transcribe
+    # Optional hint about the conversation, e.g. "Minecraft players talking in voice chat".
+    prompt: ""
+    player-names-as-keywords: true
+  t-one:
+    # Model file inside the plugin folder; downloaded automatically (~140 MB).
+    model-file: models/t-one/model.onnx
+    auto-download: true
+    download-url: "https://huggingface.co/t-tech/T-one/resolve/main/model.onnx"
+    # Pause (ms) after which a phrase is finished.
+    silence-ms: 600
+  vosk:
+    # Folder with models inside the plugin folder.
+    models-folder: models
+    # Download the model on first start if it is missing.
+    auto-download: true
+    download-url: "https://alphacephei.com/vosk/models/{model}.zip"
+    # Model per language. All models: https://alphacephei.com/vosk/models
+    # Small models (~40-50 MB) run in real time on any CPU; large ones are more accurate but need GBs of RAM.
+    # Instead of a name you can put an absolute path to a model folder.
+    models:
+      en: vosk-model-small-en-us-0.15
+      ru: vosk-model-small-ru-0.22
+      de: vosk-model-small-de-0.15
+      fr: vosk-model-small-fr-0.22
+      es: vosk-model-small-es-0.42
+      uk: vosk-model-small-uk-v3-small
+      pl: vosk-model-small-pl-0.22
+
+subtitles:
+  # Show speech bubbles above speaking players.
+  enabled: true
+  # Show the text while the player is still speaking (it grows word by word).
+  show-partial: true
+  # Show the player's name as the first line of the bubble (the vanilla name tag is visible anyway).
+  show-name: false
+  name-format: "&e{name}:"
+  # Start phrases with a capital letter.
+  capitalize: true
+  # Up to this many bubbles above a player: a new phrase appears right above the head,
+  # older ones move up and the oldest disappears.
+  max-bubbles: 3
+  # Max words in one bubble; longer speech continues in a new bubble.
+  max-words-per-bubble: 10
+  # Line wrapping inside a bubble: max characters per line and max lines.
+  # If the text is longer, its end is shown and the start is replaced with "…".
+  max-line-length: 32
+  max-lines: 3
+  # How long a finished phrase stays (seconds)...
+  display-seconds: 3.5
+  # ...plus this many ms per character, so long phrases can be read...
+  display-ms-per-character: 40
+  # ...but never longer than this (seconds).
+  max-display-seconds: 8
+  # Fade-out at the end (ms).
+  fade-out-ms: 500
+  # Height of the lowest bubble above the player's head (blocks). 0.85 = just above the vanilla name tag.
+  height: 0.85
+  # Vertical gap between stacked bubbles (blocks).
+  bubble-spacing: 0.07
+
+  # Look of the bubble.
+  # Note: Minecraft draws text backgrounds as rectangles, so rounded corners are not possible
+  # without a resource pack; everything below works for players without any mods or packs.
+  style:
+    # Ready-made look: light (white bubble, dark text), dark, glass (translucent), minimal (no background).
+    preset: light
+    # Uncomment any line below to override the preset:
+    # Background color #AARRGGBB (AA = opacity, 00 = invisible) or #RRGGBB.
+    # background: "#E6FFFFFF"
+    # Text while the player is speaking, and the finished phrase. Colors: &0-&f, &l bold, &o italic, &#RRGGBB.
+    # partial-format: "&8{text}"
+    # final-format: "&0{text}"
+    # text-shadow: false
+    # Visible through blocks.
+    see-through: false
+    # Text alignment inside the bubble: left, center, right.
+    alignment: center
+    # Spaces added on each side of every line (inner padding).
+    padding: 1
+    # Text size.
+    scale: 1.0
+    # Small pointer under the lowest bubble.
+    tail:
+      # enabled: true
+      # Any character: ▼ ▾ ◆ • ⏷ ...
+      symbol: "▼"
+      # auto = same color as the background, or #AARRGGBB.
+      color: auto
+
+  visibility:
+    # Who sees the bubbles:
+    #   voice-chat - only players Plasmo Voice actually sends the voice to (distance, groups, broadcast)
+    #   distance   - everyone within fallback-distance
+    #   world      - everyone in the same world
+    mode: voice-chat
+    # Radius used when the voice chat does not report who hears the speaker (and for mode: distance).
+    fallback-distance: 24
+    # Bubbles are never shown farther than this.
+    max-distance: 96
+    # Show bubbles to players WITHOUT the Plasmo Voice mod when they are within hearing distance
+    # (proximity voice only; groups and broadcast are not shown to them).
+    include-players-without-voice-mod: true
+    # Show players their own bubbles (visible in third-person view).
+    show-to-self: false
+    # Hide bubbles above invisible players and spectators, so their position is not revealed.
+    hide-when-speaker-invisible: true
+
+# How recognised speech is written in bubbles and chat. API events always get the original words.
+display-text:
+  # "two plus two" style number words -> digits (Russian number words: "два" -> 2, "двадцать пять" -> 25).
+  numbers-to-digits: true
+  # plus, minus, equals, divided by, times, percent -> + - = / × %
+  math-symbols: true
+  # Words that sound like the name of an online player are replaced with that name.
+  match-nicknames: true
+
+# Copy every finished phrase into the chat of the players who could hear it.
+chat:
+  enabled: true
+  format: "&8[&bVoice&8] &f{name}&7: &f{text}"
+  # Also send it to the speaker.
+  send-to-self: true
+
+debug:
+  # Print finished phrases to the console. Voice is never written to disk.
+  log-transcripts: false
+  # For every phrase print volume, duration and the engine's raw answer.
+  verbose: false
+  # DEBUG ONLY: save the audio of every phrase to plugins/PV-Transcribe/debug-audio/*.wav
+  # (exactly what the engine received). Off by default; enable only temporarily.
+  save-audio: false
