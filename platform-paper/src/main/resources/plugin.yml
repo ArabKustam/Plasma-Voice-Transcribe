@@ -18,34 +18,25 @@ commands:
 
 permissions:
   pvtranscribe.see:
-    description: See subtitles above speaking players
+    description: See speech bubbles above speaking players
     default: true
   pvtranscribe.transcribe:
-    description: Own speech is transcribed (subtitles and API events)
+    description: Own speech is transcribed (bubbles and API events)
     default: true
   pvtranscribe.command.toggle:
-    description: Hide or show subtitles for yourself with /pvt toggle
+    description: Hide or show speech bubbles for yourself with /pvt toggle
     default: true
   pvtranscribe.admin:
     description: All admin commands
     default: op
     children:
-      pvtranscribe.admin.demo:
-    description: Show a demo speech bubble without a microphone (/pvt demo)
-    default: op
-  pvtranscribe.admin.config:
-    description: View and change any config option (/pvt get, /pvt set)
-    default: op
-  pvtranscribe.admin.reload: true
+      pvtranscribe.admin.reload: true
       pvtranscribe.admin.status: true
       pvtranscribe.admin.player: true
       pvtranscribe.admin.world: true
       pvtranscribe.admin.engine: true
       pvtranscribe.admin.config: true
       pvtranscribe.admin.demo: true
-  pvtranscribe.admin.engine:
-    description: Switch the speech engine and language (/pvt engine, /pvt language)
-    default: op
   pvtranscribe.admin.reload:
     description: Reload the config (/pvt reload)
     default: op
@@ -57,4 +48,13 @@ permissions:
     default: op
   pvtranscribe.admin.world:
     description: Enable or disable transcription in a world (/pvt world)
+    default: op
+  pvtranscribe.admin.engine:
+    description: Switch the speech engine and language (/pvt engine, /pvt language)
+    default: op
+  pvtranscribe.admin.config:
+    description: View and change any config option (/pvt get, /pvt set)
+    default: op
+  pvtranscribe.admin.demo:
+    description: Show a demo speech bubble without a microphone (/pvt demo)
     default: op

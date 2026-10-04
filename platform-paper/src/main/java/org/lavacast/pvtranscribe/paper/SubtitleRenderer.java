@@ -253,9 +253,8 @@ final class SubtitleRenderer {
     }
 
     private TextDisplay spawn(Location location, TranscribeConfig.Subtitles cfg) {
-        TextDisplay display = location.getWorld().spawn(location, TextDisplay.class);
-        // all of this happens in the same tick, before the entity is sent to any client
-        display.setVisibleByDefault(false);
+        // hidden before the entity is added to the world, otherwise nearby players would see it for one tick
+        TextDisplay display = location.getWorld().spawn(location, TextDisplay.class, d -> d.setVisibleByDefault(false));
         display.setPersistent(false);
         display.addScoreboardTag(ENTITY_TAG);
         display.setBillboard(Display.Billboard.CENTER);
@@ -290,8 +289,7 @@ final class SubtitleRenderer {
      * glyph in the bubble's background color.
      */
     private TextDisplay spawnTail(Location location, TranscribeConfig.Subtitles cfg) {
-        TextDisplay tail = location.getWorld().spawn(location, TextDisplay.class);
-        tail.setVisibleByDefault(false);
+        TextDisplay tail = location.getWorld().spawn(location, TextDisplay.class, d -> d.setVisibleByDefault(false));
         tail.setPersistent(false);
         tail.addScoreboardTag(ENTITY_TAG);
         tail.setBillboard(Display.Billboard.CENTER);

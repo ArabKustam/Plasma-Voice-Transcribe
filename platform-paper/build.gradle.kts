@@ -14,6 +14,7 @@ dependencies {
     implementation(project(":voice-plasmo"))
 
     compileOnly("io.papermc.paper:paper-api:${property("paperApiVersion")}")
+    testImplementation("org.yaml:snakeyaml:2.2")
     // only so javac can read Plasmo Voice annotations on the shaded adapter classes
     compileOnly("su.plo.voice.api:server:${property("plasmoVoiceVersion")}")
 }
