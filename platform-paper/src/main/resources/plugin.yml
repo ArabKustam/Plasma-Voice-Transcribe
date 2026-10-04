@@ -4,7 +4,7 @@ main: org.lavacast.pvtranscribe.paper.PVTranscribePlugin
 api-version: '1.20'
 description: Real-time speech-to-text for Plasmo Voice with subtitles above players and an API for other plugins.
 authors: [arab_kustam]
-website: https://github.com/ArabKustam/Plasma-Voice-Transcribe
+website: https://github.com/ArabKustam/Plasmo-Voice-Transcribe
 softdepend: [PlasmoVoice]
 # Downloaded by Paper/Spigot from Maven Central on first start (includes native libraries for Windows, Linux x64, macOS).
 libraries:

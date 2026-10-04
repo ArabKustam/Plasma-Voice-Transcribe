@@ -12,7 +12,7 @@
    | Icon | [`icon.png`](../icon.png) |
    | Description | paste [`description.md`](description.md); it already contains the English and Russian text |
    | Categories | Utility, Social, Management |
-   | Links | Source `https://github.com/ArabKustam/Plasma-Voice-Transcribe`, issues `https://github.com/ArabKustam/Plasma-Voice-Transcribe/issues` |
+   | Links | Source `https://github.com/ArabKustam/Plasmo-Voice-Transcribe`, issues `https://github.com/ArabKustam/Plasmo-Voice-Transcribe/issues` |
    | License | MIT |
 
 3. Upload the version:

@@ -2,10 +2,10 @@
 
 <img src="docs/images/banner-en.png" alt="PV-Transcribe">
 
-[Releases](https://github.com/ArabKustam/Plasma-Voice-Transcribe/releases) | [Modrinth](https://modrinth.com/plugin/pv-transcribe) | [Documentation](#configuration) | [API](#for-developers) | [Report a bug](https://github.com/ArabKustam/Plasma-Voice-Transcribe/issues) | [Русский](README.ru.md)
+[Releases](https://github.com/ArabKustam/Plasmo-Voice-Transcribe/releases) | [Modrinth](https://modrinth.com/plugin/pv-transcribe) | [Documentation](#configuration) | [API](#for-developers) | [Report a bug](https://github.com/ArabKustam/Plasmo-Voice-Transcribe/issues) | [Русский](README.ru.md)
 
-[![Release](https://img.shields.io/github/v/release/ArabKustam/Plasma-Voice-Transcribe?label=release)](https://github.com/ArabKustam/Plasma-Voice-Transcribe/releases)
-[![Build](https://github.com/ArabKustam/Plasma-Voice-Transcribe/actions/workflows/build.yml/badge.svg)](https://github.com/ArabKustam/Plasma-Voice-Transcribe/actions)
+[![Release](https://img.shields.io/github/v/release/ArabKustam/Plasmo-Voice-Transcribe?label=release)](https://github.com/ArabKustam/Plasmo-Voice-Transcribe/releases)
+[![Build](https://github.com/ArabKustam/Plasmo-Voice-Transcribe/actions/workflows/build.yml/badge.svg)](https://github.com/ArabKustam/Plasmo-Voice-Transcribe/actions)
 ![Paper 1.20.2+](https://img.shields.io/badge/Paper%20%2F%20Spigot-1.20.2%E2%80%931.21.11-brightgreen)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
@@ -46,7 +46,7 @@ Bubbles are shown only to players who can hear the speaker: proximity distance, 
 ## Installation
 
 1. Install Plasmo Voice on the server.
-2. Download `PV-Transcribe-x.y.z.jar` from [Releases](https://github.com/ArabKustam/Plasma-Voice-Transcribe/releases) (or Modrinth) into `plugins/`.
+2. Download `PV-Transcribe-x.y.z.jar` from [Releases](https://github.com/ArabKustam/Plasmo-Voice-Transcribe/releases) (or Modrinth) into `plugins/`.
 3. Start the server. The plugin picks a free local engine automatically.
 4. Optional, for the best accuracy, use Deepgram:
    1. Create a key at [console.deepgram.com](https://console.deepgram.com).
@@ -161,7 +161,7 @@ No. Audio stays in memory only while it is being recognised. With a cloud engine
 
 ## Support
 
-- Bugs and ideas: [GitHub Issues](https://github.com/ArabKustam/Plasma-Voice-Transcribe/issues)
+- Bugs and ideas: [GitHub Issues](https://github.com/ArabKustam/Plasmo-Voice-Transcribe/issues)
 - Author on Discord: **arab_kustam**
 - Plasmo Voice Discord: https://discord.com/invite/uueEqzwCJJ
 

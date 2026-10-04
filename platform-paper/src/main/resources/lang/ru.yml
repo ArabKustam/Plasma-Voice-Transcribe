@@ -31,6 +31,6 @@ help:
   - "&b/vtt language <ru|en|...|auto> &7- язык распознавания"
   - "&b/vtt player <ник> <on|off> &7- транскрибация игрока"
   - "&b/vtt world <мир> <on|off> &7- транскрибация в мире"
-  - "&7GitHub: &fhttps://github.com/ArabKustam/Plasma-Voice-Transcribe"
+  - "&7GitHub: &fhttps://github.com/ArabKustam/Plasmo-Voice-Transcribe"
   - "&7Discord автора: &farab_kustam"
   - "&7Discord Plasmo Voice: &fhttps://discord.com/invite/uueEqzwCJJ"

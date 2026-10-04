@@ -37,4 +37,4 @@ On first start the server downloads the Vosk / ONNX Runtime libraries from Maven
 - Developer API shared with SVC-Transcribe (Simple Voice Chat): speech start/end, partial/final transcripts, phrase triggers, subtitle processors, Bukkit events
 - English and Russian messages (`locale: en|ru`)
 
-Full documentation: [README](https://github.com/ArabKustam/Plasma-Voice-Transcribe#readme) · [Русский](https://github.com/ArabKustam/Plasma-Voice-Transcribe/blob/main/README.ru.md)
+Full documentation: [README](https://github.com/ArabKustam/Plasmo-Voice-Transcribe#readme) · [Русский](https://github.com/ArabKustam/Plasmo-Voice-Transcribe/blob/main/README.ru.md)

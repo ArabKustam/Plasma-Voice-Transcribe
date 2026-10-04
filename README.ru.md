@@ -2,10 +2,10 @@
 
 <img src="docs/images/banner-ru.png" alt="PV-Transcribe">
 
-[Релизы](https://github.com/ArabKustam/Plasma-Voice-Transcribe/releases) | [Modrinth](https://modrinth.com/plugin/pv-transcribe) | [Настройка](#настройка) | [API](#для-разработчиков) | [Сообщить об ошибке](https://github.com/ArabKustam/Plasma-Voice-Transcribe/issues) | [English](README.md)
+[Релизы](https://github.com/ArabKustam/Plasmo-Voice-Transcribe/releases) | [Modrinth](https://modrinth.com/plugin/pv-transcribe) | [Настройка](#настройка) | [API](#для-разработчиков) | [Сообщить об ошибке](https://github.com/ArabKustam/Plasmo-Voice-Transcribe/issues) | [English](README.md)
 
-[![Release](https://img.shields.io/github/v/release/ArabKustam/Plasma-Voice-Transcribe?label=release)](https://github.com/ArabKustam/Plasma-Voice-Transcribe/releases)
-[![Build](https://github.com/ArabKustam/Plasma-Voice-Transcribe/actions/workflows/build.yml/badge.svg)](https://github.com/ArabKustam/Plasma-Voice-Transcribe/actions)
+[![Release](https://img.shields.io/github/v/release/ArabKustam/Plasmo-Voice-Transcribe?label=release)](https://github.com/ArabKustam/Plasmo-Voice-Transcribe/releases)
+[![Build](https://github.com/ArabKustam/Plasmo-Voice-Transcribe/actions/workflows/build.yml/badge.svg)](https://github.com/ArabKustam/Plasmo-Voice-Transcribe/actions)
 ![Paper 1.20.2+](https://img.shields.io/badge/Paper%20%2F%20Spigot-1.20.2%E2%80%931.21.11-brightgreen)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
@@ -46,7 +46,7 @@
 ## Установка
 
 1. Установите Plasmo Voice на сервер.
-2. Скачайте `PV-Transcribe-x.y.z.jar` из [Releases](https://github.com/ArabKustam/Plasma-Voice-Transcribe/releases) (или с Modrinth) в `plugins/`.
+2. Скачайте `PV-Transcribe-x.y.z.jar` из [Releases](https://github.com/ArabKustam/Plasmo-Voice-Transcribe/releases) (или с Modrinth) в `plugins/`.
 3. Запустите сервер. Плагин сам выберет бесплатный локальный движок.
 4. Для русского языка впишите в `plugins/PV-Transcribe/config.yml` строки `locale: ru` и `transcription.language: ru`.
 5. По желанию, для максимальной точности, подключите Deepgram:
@@ -170,7 +170,7 @@ Paper, Spigot и Purpur 1.20.2 и новее (текстовые дисплеи 
 
 ## Поддержка
 
-- Ошибки и идеи: [GitHub Issues](https://github.com/ArabKustam/Plasma-Voice-Transcribe/issues)
+- Ошибки и идеи: [GitHub Issues](https://github.com/ArabKustam/Plasmo-Voice-Transcribe/issues)
 - Автор в Discord: **arab_kustam**
 - Discord Plasmo Voice: https://discord.com/invite/uueEqzwCJJ
 
