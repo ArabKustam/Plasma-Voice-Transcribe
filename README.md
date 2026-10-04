@@ -69,6 +69,8 @@ Players talk, and everyone who hears them sees their words in speech bubbles abo
 | `/pvt toggle` | Hide or show bubbles for yourself | `pvtranscribe.command.toggle` (everyone) |
 | `/pvt status` | Engine state, load, dropped audio | `pvtranscribe.admin.status` |
 | `/pvt reload` | Reload config and messages | `pvtranscribe.admin.reload` |
+| `/pvt get [section]` | Show settings (API keys are masked) | `pvtranscribe.admin.config` |
+| `/pvt set <option> <value>` | Change **any** config option in game; Tab completes options and values; saved to config.yml | `pvtranscribe.admin.config` |
 | `/pvt engine <auto\|vosk\|t-one\|deepgram\|openai>` | Switch the speech engine live | `pvtranscribe.admin.engine` |
 | `/pvt language <code\|auto>` | Recognition language, `auto` = detect | `pvtranscribe.admin.engine` |
 | `/pvt player <name> <on\|off>` | Enable or disable transcription for a player | `pvtranscribe.admin.player` |
@@ -84,7 +86,7 @@ More permissions:
 
 ## Configuration
 
-Every option is documented in [`config.yml`](platform-paper/src/main/resources/config.yml): language, engine and API keys, bubbles and their look, who sees them, timings, chat copy, number formatting, nickname matching, worlds, performance and debugging. Messages are in `plugins/PV-Transcribe/lang/` (English and Russian).
+Settings can be changed in two ways: edit [`config.yml`](platform-paper/src/main/resources/config.yml) and run `/pvt reload`, or change them in game with `/pvt set <option> <value>`, for example `/pvt set subtitles.style.preset dark`. Every option is documented in the config: language, engine and API keys, bubbles and their look, who sees them, timings, chat copy, number formatting, nickname matching, worlds, performance and debugging. Messages are in `plugins/PV-Transcribe/lang/` (English and Russian).
 
 ![Bubble styles](docs/images/bubble-styles-en.png)
 

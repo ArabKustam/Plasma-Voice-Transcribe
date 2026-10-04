@@ -17,7 +17,7 @@
   - **Deepgram**: cloud, most accurate, player names spelled right
   - **OpenAI**: cloud, any language
 - 🔢 **Smart text.** Nicknames of online players are recognised; spoken numbers become digits (2 + 2 = 4).
-- 🛠️ **Admin tools.** Permissions, per-player and per-world switches, live status, English and Russian messages.
+- 🛠️ **Admin tools.** Change any setting in game with `/pvt set` (with Tab completion) or in config.yml. Also permissions, per-player and per-world switches, live status, English and Russian messages.
 - ⚡ **Lag-free.** Recognition never runs on the main thread, and there is overload protection.
 - 🔒 **Privacy.** Voice is never saved to disk.
 
@@ -49,7 +49,7 @@ The voice-chat-independent API gives you speech start and end, live and final te
 - 🎨 Пресеты и свои цвета, хвостик, выравнивание, размер
 - 🧠 Движки: Vosk и T-one (бесплатно, на сервере), Deepgram и OpenAI (облако, точнее всего)
 - 🔢 Ники игроков и цифры (2 + 2 = 4)
-- 🛠️ Права, отключение для игроков и миров, сообщения на русском (`locale: ru`)
+- 🛠️ Любая настройка меняется прямо в игре (`/pvt set`, с подсказками Tab) или в config.yml. Права, отключение для игроков и миров, сообщения на русском (`locale: ru`)
 - 🧩 API для голосовых команд, NPC и квестов
 
 ![Как это работает](https://raw.githubusercontent.com/ArabKustam/Plasma-Voice-Transcribe/main/docs/images/how-it-works-ru.png)

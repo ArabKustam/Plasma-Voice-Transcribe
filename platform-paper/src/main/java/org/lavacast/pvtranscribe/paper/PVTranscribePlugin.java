@@ -172,6 +172,15 @@ public final class PVTranscribePlugin extends JavaPlugin {
         reloadPlugin();
     }
 
+    /**
+     * Sets any config.yml option (from /get|set commands), saves the file and reloads.
+     */
+    void setOption(String path, Object value) {
+        getConfig().set(path, value);
+        saveConfig();
+        reloadPlugin();
+    }
+
     void setWorldEnabled(String world, boolean enabled) {
         List<String> disabled = new ArrayList<>(getConfig().getStringList("transcription.disabled-worlds"));
         disabled.removeIf(w -> w.equalsIgnoreCase(world));

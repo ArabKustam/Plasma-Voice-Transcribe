@@ -66,6 +66,50 @@ final class PVTranscribeCommand implements TabExecutor {
                 String name = target.getName() != null ? target.getName() : args[1];
                 messages.send(sender, enable ? "player-transcription-on" : "player-transcription-off", "player", name);
             }
+            case "get", "config" -> {
+                if (!check(sender, "pvtranscribe.admin.config")) return true;
+                String prefix = args.length >= 2 ? args[1] : "";
+                List<String> paths = ConfigEditor.paths(plugin.getConfig()).stream()
+                        .filter(p -> p.startsWith(prefix)).toList();
+                if (paths.isEmpty()) {
+                    messages.send(sender, "config-unknown", "option", prefix);
+                    return true;
+                }
+                if (paths.size() > 40) {
+                    // too many to list: show the top-level sections
+                    java.util.Set<String> sections = new java.util.TreeSet<>();
+                    for (String p : paths) {
+                        int dot = p.indexOf('.', prefix.length() + 1);
+                        sections.add(dot > 0 ? p.substring(0, dot) : p);
+                    }
+                    messages.raw(sender, "&7Sections: &f" + String.join("&7, &f", sections)
+                            + " &7- use &f/pvt get <section>");
+                    return true;
+                }
+                for (String p : paths) {
+                    sender.sendMessage(org.lavacast.pvtranscribe.core.util.TextUtil.colorize("&7" + p + ": &f")
+                            + ConfigEditor.show(plugin.getConfig(), p));
+                }
+            }
+            case "set" -> {
+                if (!check(sender, "pvtranscribe.admin.config")) return true;
+                if (args.length < 3) {
+                    messages.send(sender, "config-usage");
+                    return true;
+                }
+                String path = args[1];
+                if (!ConfigEditor.isKnown(plugin.getConfig(), path)) {
+                    messages.send(sender, "config-unknown", "option", path);
+                    return true;
+                }
+                Object value = ConfigEditor.parse(plugin.getConfig(), path, ConfigEditor.join(args, 2));
+                if (value == null) {
+                    messages.send(sender, "config-bad-value", "option", path, "value", ConfigEditor.join(args, 2));
+                    return true;
+                }
+                plugin.setOption(path, value);
+                messages.send(sender, "config-set", "option", path, "value", ConfigEditor.show(plugin.getConfig(), path));
+            }
             case "engine" -> {
                 if (!check(sender, "pvtranscribe.admin.engine")) return true;
                 if (args.length < 2) {
@@ -155,6 +199,10 @@ final class PVTranscribeCommand implements TabExecutor {
             if (sender.hasPermission("pvtranscribe.admin.status")) options.add("status");
             if (sender.hasPermission("pvtranscribe.admin.player")) options.add("player");
             if (sender.hasPermission("pvtranscribe.admin.world")) options.add("world");
+            if (sender.hasPermission("pvtranscribe.admin.config")) {
+                options.add("get");
+                options.add("set");
+            }
             if (sender.hasPermission("pvtranscribe.admin.engine")) {
                 options.add("engine");
                 options.add("language");
@@ -167,6 +215,15 @@ final class PVTranscribeCommand implements TabExecutor {
         }
         if (args.length == 2 && args[0].equalsIgnoreCase("world") && sender.hasPermission("pvtranscribe.admin.world")) {
             return filter(Bukkit.getWorlds().stream().map(World::getName), args[1]);
+        }
+        if (sender.hasPermission("pvtranscribe.admin.config") && args.length >= 1) {
+            String sub = args[0].toLowerCase(Locale.ROOT);
+            if (args.length == 2 && (sub.equals("set") || sub.equals("get") || sub.equals("config"))) {
+                return filter(ConfigEditor.paths(plugin.getConfig()).stream(), args[1]);
+            }
+            if (args.length == 3 && sub.equals("set")) {
+                return filter(ConfigEditor.suggestions(plugin.getConfig(), args[1]).stream(), args[2]);
+            }
         }
         if (args.length == 2 && args[0].equalsIgnoreCase("engine") && sender.hasPermission("pvtranscribe.admin.engine")) {
             List<String> types = new ArrayList<>(plugin.engines().types());

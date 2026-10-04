@@ -70,6 +70,8 @@
 | `/pvt toggle` | Скрыть или показать облачка для себя | `pvtranscribe.command.toggle` (все) |
 | `/pvt status` | Состояние движка, нагрузка, потерянный звук | `pvtranscribe.admin.status` |
 | `/pvt reload` | Перезагрузить конфиг и сообщения | `pvtranscribe.admin.reload` |
+| `/pvt get [раздел]` | Показать настройки (ключи API скрыты) | `pvtranscribe.admin.config` |
+| `/pvt set <параметр> <значение>` | Изменить **любой** параметр конфига прямо в игре; Tab подсказывает параметры и значения; сохраняется в config.yml | `pvtranscribe.admin.config` |
 | `/pvt engine <auto\|vosk\|t-one\|deepgram\|openai>` | Сменить движок на лету | `pvtranscribe.admin.engine` |
 | `/pvt language <код\|auto>` | Язык распознавания, `auto` — автоопределение | `pvtranscribe.admin.engine` |
 | `/pvt player <ник> <on\|off>` | Включить или выключить транскрибацию игрока | `pvtranscribe.admin.player` |
@@ -85,7 +87,7 @@
 
 ## Настройка
 
-Все параметры с комментариями есть в [`config.yml`](platform-paper/src/main/resources/config.yml): язык, движок и ключи API, облачка и их вид, кто их видит, тайминги, копия в чат, цифры, ники, миры, производительность и отладка. Тексты сообщений лежат в `plugins/PV-Transcribe/lang/` (английский и русский).
+Настройки меняются двумя способами: в [`config.yml`](platform-paper/src/main/resources/config.yml) с последующим `/pvt reload` или прямо в игре командой `/pvt set <параметр> <значение>`, например `/pvt set subtitles.style.preset dark`. Все параметры описаны в конфиге: язык, движок и ключи API, облачка и их вид, кто их видит, тайминги, копия в чат, цифры, ники, миры, производительность и отладка. Тексты сообщений лежат в `plugins/PV-Transcribe/lang/` (английский и русский).
 
 ![Стили облачков](docs/images/bubble-styles-ru.png)
 
