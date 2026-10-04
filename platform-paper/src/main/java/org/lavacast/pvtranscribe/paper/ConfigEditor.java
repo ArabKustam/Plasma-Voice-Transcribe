@@ -12,7 +12,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 /**
- * Reads and writes any config.yml value from in-game commands ({@code /pvt get|set <path> <value>}).
+ * Reads and writes any config.yml value from in-game commands ({@code /vtt get|set <path> <value>}).
  * Values are parsed to the type of the current value (or a sensible guess), saved with the comments
  * kept, and then the plugin reloads.
  */

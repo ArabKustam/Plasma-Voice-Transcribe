@@ -8,8 +8,12 @@
 - 🎨 Пресеты и свои цвета, хвостик, выравнивание, размер
 - 🧠 Движки: Vosk и T-one (бесплатно, на сервере), Deepgram и OpenAI (облако, точнее всего)
 - 🔢 Ники игроков и цифры (2 + 2 = 4)
-- 🛠️ Любая настройка меняется прямо в игре (`/pvt set`, с подсказками Tab) или в config.yml. Права, отключение для игроков и миров, сообщения на русском (`locale: ru`)
+- 🛠️ Любая настройка меняется прямо в игре (`/vtt set`, с подсказками Tab) или в config.yml. Права, отключение для игроков и миров, сообщения на русском (`locale: ru`)
 - 🧩 API для голосовых команд, NPC и квестов
+
+![Стили облачков](https://raw.githubusercontent.com/ArabKustam/Plasma-Voice-Transcribe/main/docs/images/bubble-styles-ru.png)
+
+![Несколько игроков и копия в чат](https://raw.githubusercontent.com/ArabKustam/Plasma-Voice-Transcribe/main/docs/images/speakers-chat-ru.png)
 
 ![Как это работает](https://raw.githubusercontent.com/ArabKustam/Plasma-Voice-Transcribe/main/docs/images/how-it-works-ru.png)
 

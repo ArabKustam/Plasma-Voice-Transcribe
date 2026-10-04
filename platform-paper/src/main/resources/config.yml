@@ -1,7 +1,7 @@
 # ============================================================================
 #  PV-Transcribe - real-time speech-to-text for Plasmo Voice
 # ============================================================================
-# Apply changes with: /pvt reload
+# Apply changes with: /vtt reload
 
 config-version: 2
 
@@ -12,10 +12,10 @@ enabled: true
 locale: en
 
 transcription:
-  # Recognition language (ISO code: en, ru, de, ...). Change in game with /pvt language <code>.
+  # Recognition language (ISO code: en, ru, de, ...). Change in game with /vtt language <code>.
   # The vosk engine needs a model per language (see engine.vosk.models).
   language: en
-  # Detect the spoken language automatically (/pvt language auto).
+  # Detect the spoken language automatically (/vtt language auto).
   # Only the cloud engines (openai, deepgram) can do this; vosk and t-one use "language".
   auto-detect-language: false
   # Show intermediate text while the player is still speaking.
@@ -35,11 +35,11 @@ transcription:
   max-queue-ms: 3000
   # Recognizers of silent players are freed after this many seconds.
   idle-recognizer-close-seconds: 60
-  # Worlds without transcription. Change in game with /pvt world <world> on|off
+  # Worlds without transcription. Change in game with /vtt world <world> on|off
   disabled-worlds: []
 
 engine:
-  # Speech-to-text engine. Switch in game with /pvt engine <type>.
+  # Speech-to-text engine. Switch in game with /vtt engine <type>.
   #   auto     - t-one for Russian, vosk for other languages (cloud engine if auto-detect is on and a key is set)
   #   vosk     - offline, free, many languages; picks words from its dictionary, so rare words and names suffer
   #   t-one    - offline, free, Russian only; writes what it hears letter by letter

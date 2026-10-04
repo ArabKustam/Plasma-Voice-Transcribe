@@ -40,6 +40,8 @@ Players talk, and everyone who hears them sees their words in speech bubbles abo
 - **Built for busy servers.** Recognition never runs on the main thread, every speaker is processed independently, and there is overload protection.
 - **Privacy.** Voice is never saved to disk. Cloud engines receive audio only while someone speaks.
 
+![Several speakers and chat copy](docs/images/speakers-chat-en.png)
+
 ![How it works](docs/images/how-it-works-en.png)
 
 ## Requirements
@@ -60,22 +62,22 @@ Players talk, and everyone who hears them sees their words in speech bubbles abo
 4. Optional, for the best accuracy, use Deepgram:
    1. Create a key at [console.deepgram.com](https://console.deepgram.com).
    2. Put it into `engine.deepgram.api-key` in `plugins/PV-Transcribe/config.yml`.
-   3. Run `/pvt reload` and `/pvt engine deepgram`.
+   3. Run `/vtt reload` and `/vtt engine deepgram`.
 
 ## Commands
 
 | Command | Description | Permission |
 |---|---|---|
-| `/pvt toggle` | Hide or show bubbles for yourself | `pvtranscribe.command.toggle` (everyone) |
-| `/pvt status` | Engine state, load, dropped audio | `pvtranscribe.admin.status` |
-| `/pvt reload` | Reload config and messages | `pvtranscribe.admin.reload` |
-| `/pvt demo [player] [text]` | Show a demo bubble without a microphone (test styles, take screenshots) | `pvtranscribe.admin.demo` |
-| `/pvt get [section]` | Show settings (API keys are masked) | `pvtranscribe.admin.config` |
-| `/pvt set <option> <value>` | Change **any** config option in game; Tab completes options and values; saved to config.yml | `pvtranscribe.admin.config` |
-| `/pvt engine <auto\|vosk\|t-one\|deepgram\|openai>` | Switch the speech engine live | `pvtranscribe.admin.engine` |
-| `/pvt language <code\|auto>` | Recognition language, `auto` = detect | `pvtranscribe.admin.engine` |
-| `/pvt player <name> <on\|off>` | Enable or disable transcription for a player | `pvtranscribe.admin.player` |
-| `/pvt world <world> <on\|off>` | Enable or disable transcription in a world | `pvtranscribe.admin.world` |
+| `/vtt toggle` | Hide or show bubbles for yourself | `pvtranscribe.command.toggle` (everyone) |
+| `/vtt status` | Engine state, load, dropped audio | `pvtranscribe.admin.status` |
+| `/vtt reload` | Reload config and messages | `pvtranscribe.admin.reload` |
+| `/vtt demo [player] [text]` | Show a demo bubble without a microphone (test styles, take screenshots) | `pvtranscribe.admin.demo` |
+| `/vtt get [section]` | Show settings (API keys are masked) | `pvtranscribe.admin.config` |
+| `/vtt set <option> <value>` | Change **any** config option in game; Tab completes options and values; saved to config.yml | `pvtranscribe.admin.config` |
+| `/vtt engine <auto\|vosk\|t-one\|deepgram\|openai>` | Switch the speech engine live | `pvtranscribe.admin.engine` |
+| `/vtt language <code\|auto>` | Recognition language, `auto` = detect | `pvtranscribe.admin.engine` |
+| `/vtt player <name> <on\|off>` | Enable or disable transcription for a player | `pvtranscribe.admin.player` |
+| `/vtt world <world> <on\|off>` | Enable or disable transcription in a world | `pvtranscribe.admin.world` |
 
 More permissions:
 
@@ -87,9 +89,11 @@ More permissions:
 
 ## Configuration
 
-Settings can be changed in two ways: edit [`config.yml`](platform-paper/src/main/resources/config.yml) and run `/pvt reload`, or change them in game with `/pvt set <option> <value>`, for example `/pvt set subtitles.style.preset dark`. Every option is documented in the config: language, engine and API keys, bubbles and their look, who sees them, timings, chat copy, number formatting, nickname matching, worlds, performance and debugging. Messages are in `plugins/PV-Transcribe/lang/` (English and Russian).
+Settings can be changed in two ways: edit [`config.yml`](platform-paper/src/main/resources/config.yml) and run `/vtt reload`, or change them in game with `/vtt set <option> <value>`, for example `/vtt set subtitles.style.preset dark`. Every option is documented in the config: language, engine and API keys, bubbles and their look, who sees them, timings, chat copy, number formatting, nickname matching, worlds, performance and debugging. Messages are in `plugins/PV-Transcribe/lang/` (English and Russian).
 
 ![Bubble styles](docs/images/bubble-styles-en.png)
+
+![Stacked bubbles](docs/images/stacked-bubbles-en.png)
 
 ```yaml
 subtitles:

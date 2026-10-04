@@ -40,6 +40,8 @@
 - **Для больших серверов.** Распознавание никогда не идёт в основном потоке, каждый игрок обрабатывается отдельно, есть защита от перегрузки.
 - **Приватность.** Голос не сохраняется на диск. Облачные движки получают звук только пока игрок говорит.
 
+![Несколько игроков и копия в чат](docs/images/speakers-chat-ru.png)
+
 ![Как это работает](docs/images/how-it-works-ru.png)
 
 ## Требования
@@ -61,22 +63,22 @@
 5. По желанию, для максимальной точности, подключите Deepgram:
    1. Создайте ключ на [console.deepgram.com](https://console.deepgram.com).
    2. Впишите его в `engine.deepgram.api-key`.
-   3. Выполните `/pvt reload` и `/pvt engine deepgram`.
+   3. Выполните `/vtt reload` и `/vtt engine deepgram`.
 
 ## Команды
 
 | Команда | Что делает | Право |
 |---|---|---|
-| `/pvt toggle` | Скрыть или показать облачка для себя | `pvtranscribe.command.toggle` (все) |
-| `/pvt status` | Состояние движка, нагрузка, потерянный звук | `pvtranscribe.admin.status` |
-| `/pvt reload` | Перезагрузить конфиг и сообщения | `pvtranscribe.admin.reload` |
-| `/pvt demo [игрок] [текст]` | Демо-облачко без микрофона (проверить стиль, сделать скриншот) | `pvtranscribe.admin.demo` |
-| `/pvt get [раздел]` | Показать настройки (ключи API скрыты) | `pvtranscribe.admin.config` |
-| `/pvt set <параметр> <значение>` | Изменить **любой** параметр конфига прямо в игре; Tab подсказывает параметры и значения; сохраняется в config.yml | `pvtranscribe.admin.config` |
-| `/pvt engine <auto\|vosk\|t-one\|deepgram\|openai>` | Сменить движок на лету | `pvtranscribe.admin.engine` |
-| `/pvt language <код\|auto>` | Язык распознавания, `auto` — автоопределение | `pvtranscribe.admin.engine` |
-| `/pvt player <ник> <on\|off>` | Включить или выключить транскрибацию игрока | `pvtranscribe.admin.player` |
-| `/pvt world <мир> <on\|off>` | Включить или выключить транскрибацию в мире | `pvtranscribe.admin.world` |
+| `/vtt toggle` | Скрыть или показать облачка для себя | `pvtranscribe.command.toggle` (все) |
+| `/vtt status` | Состояние движка, нагрузка, потерянный звук | `pvtranscribe.admin.status` |
+| `/vtt reload` | Перезагрузить конфиг и сообщения | `pvtranscribe.admin.reload` |
+| `/vtt demo [игрок] [текст]` | Демо-облачко без микрофона (проверить стиль, сделать скриншот) | `pvtranscribe.admin.demo` |
+| `/vtt get [раздел]` | Показать настройки (ключи API скрыты) | `pvtranscribe.admin.config` |
+| `/vtt set <параметр> <значение>` | Изменить **любой** параметр конфига прямо в игре; Tab подсказывает параметры и значения; сохраняется в config.yml | `pvtranscribe.admin.config` |
+| `/vtt engine <auto\|vosk\|t-one\|deepgram\|openai>` | Сменить движок на лету | `pvtranscribe.admin.engine` |
+| `/vtt language <код\|auto>` | Язык распознавания, `auto` — автоопределение | `pvtranscribe.admin.engine` |
+| `/vtt player <ник> <on\|off>` | Включить или выключить транскрибацию игрока | `pvtranscribe.admin.player` |
+| `/vtt world <мир> <on\|off>` | Включить или выключить транскрибацию в мире | `pvtranscribe.admin.world` |
 
 Другие права:
 
@@ -88,9 +90,11 @@
 
 ## Настройка
 
-Настройки меняются двумя способами: в [`config.yml`](platform-paper/src/main/resources/config.yml) с последующим `/pvt reload` или прямо в игре командой `/pvt set <параметр> <значение>`, например `/pvt set subtitles.style.preset dark`. Все параметры описаны в конфиге: язык, движок и ключи API, облачка и их вид, кто их видит, тайминги, копия в чат, цифры, ники, миры, производительность и отладка. Тексты сообщений лежат в `plugins/PV-Transcribe/lang/` (английский и русский).
+Настройки меняются двумя способами: в [`config.yml`](platform-paper/src/main/resources/config.yml) с последующим `/vtt reload` или прямо в игре командой `/vtt set <параметр> <значение>`, например `/vtt set subtitles.style.preset dark`. Все параметры описаны в конфиге: язык, движок и ключи API, облачка и их вид, кто их видит, тайминги, копия в чат, цифры, ники, миры, производительность и отладка. Тексты сообщений лежат в `plugins/PV-Transcribe/lang/` (английский и русский).
 
 ![Стили облачков](docs/images/bubble-styles-ru.png)
+
+![Несколько облачков](docs/images/stacked-bubbles-ru.png)
 
 ```yaml
 subtitles:

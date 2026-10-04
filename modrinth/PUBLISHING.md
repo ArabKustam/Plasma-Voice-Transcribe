@@ -25,4 +25,4 @@
    | Dependency | **Plasmo Voice**, required |
    | Changelog | the 1.0.0 section of [`CHANGELOG.md`](../CHANGELOG.md) |
 
-4. Gallery: upload the images from [`docs/images`](../docs/images) and in-game screenshots.
+4. Gallery: upload the in-game screenshots from [`docs/images`](../docs/images) (live subtitles, styles, stacked bubbles, chat).

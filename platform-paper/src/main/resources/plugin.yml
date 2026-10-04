@@ -11,10 +11,10 @@ libraries:
   - com.microsoft.onnxruntime:onnxruntime:${onnxRuntimeVersion}
 
 commands:
-  pvtranscribe:
-    description: PV-Transcribe commands
-    usage: /pvtranscribe help
-    aliases: [pvt, transcribe]
+  vtt:
+    description: PV-Transcribe commands (voice to text)
+    usage: /vtt help
+    aliases: [voicetotext]
 
 permissions:
   pvtranscribe.see:
@@ -24,7 +24,7 @@ permissions:
     description: Own speech is transcribed (bubbles and API events)
     default: true
   pvtranscribe.command.toggle:
-    description: Hide or show speech bubbles for yourself with /pvt toggle
+    description: Hide or show speech bubbles for yourself with /vtt toggle
     default: true
   pvtranscribe.admin:
     description: All admin commands
@@ -38,23 +38,23 @@ permissions:
       pvtranscribe.admin.config: true
       pvtranscribe.admin.demo: true
   pvtranscribe.admin.reload:
-    description: Reload the config (/pvt reload)
+    description: Reload the config (/vtt reload)
     default: op
   pvtranscribe.admin.status:
-    description: Show engine and load status (/pvt status)
+    description: Show engine and load status (/vtt status)
     default: op
   pvtranscribe.admin.player:
-    description: Enable or disable transcription for a player (/pvt player)
+    description: Enable or disable transcription for a player (/vtt player)
     default: op
   pvtranscribe.admin.world:
-    description: Enable or disable transcription in a world (/pvt world)
+    description: Enable or disable transcription in a world (/vtt world)
     default: op
   pvtranscribe.admin.engine:
-    description: Switch the speech engine and language (/pvt engine, /pvt language)
+    description: Switch the speech engine and language (/vtt engine, /vtt language)
     default: op
   pvtranscribe.admin.config:
-    description: View and change any config option (/pvt get, /pvt set)
+    description: View and change any config option (/vtt get, /vtt set)
     default: op
   pvtranscribe.admin.demo:
-    description: Show a demo speech bubble without a microphone (/pvt demo)
+    description: Show a demo speech bubble without a microphone (/vtt demo)
     default: op

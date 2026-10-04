@@ -71,7 +71,7 @@ public final class PVTranscribePlugin extends JavaPlugin {
         getServer().getScheduler().runTaskTimer(this, platform::refreshAll, 10L, 10L);
 
         PVTranscribeCommand command = new PVTranscribeCommand(this);
-        PluginCommand pluginCommand = getCommand("pvtranscribe");
+        PluginCommand pluginCommand = getCommand("vtt");
         if (pluginCommand != null) {
             pluginCommand.setExecutor(command);
             pluginCommand.setTabCompleter(command);
