@@ -10,7 +10,7 @@
    - Description: paste [`description.md`](description.md)
    - Categories: Utility, Social, Management
    - Environment: server-side only
-   - Source code: `https://github.com/ArabKustam/PV-Transcribe`, issues: `.../issues`
+   - Source code: `https://github.com/ArabKustam/Plasma-Voice-Transcribe`, issues: `.../issues`
    - License: MIT
 3. Upload the version:
    - Version number: `1.0.0`

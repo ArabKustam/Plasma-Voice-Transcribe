@@ -23,7 +23,7 @@ Players don't need any extra mod or resource pack to see the bubbles.
 
 ## For developers
 
-A voice-chat-independent API: speech start and end, live and final text, phrase triggers ("say *fireball* to cast it"), subtitle filters for moderation, plus Bukkit events. See [GitHub](https://github.com/ArabKustam/PV-Transcribe).
+A voice-chat-independent API: speech start and end, live and final text, phrase triggers ("say *fireball* to cast it"), subtitle filters for moderation, plus Bukkit events. See [GitHub](https://github.com/ArabKustam/Plasma-Voice-Transcribe).
 
 ## Requirements
 
