@@ -30,7 +30,10 @@ permissions:
     description: All admin commands
     default: op
     children:
-      pvtranscribe.admin.config:
+      pvtranscribe.admin.demo:
+    description: Show a demo speech bubble without a microphone (/pvt demo)
+    default: op
+  pvtranscribe.admin.config:
     description: View and change any config option (/pvt get, /pvt set)
     default: op
   pvtranscribe.admin.reload: true
@@ -39,6 +42,7 @@ permissions:
       pvtranscribe.admin.world: true
       pvtranscribe.admin.engine: true
       pvtranscribe.admin.config: true
+      pvtranscribe.admin.demo: true
   pvtranscribe.admin.engine:
     description: Switch the speech engine and language (/pvt engine, /pvt language)
     default: op

@@ -66,6 +66,23 @@ final class PVTranscribeCommand implements TabExecutor {
                 String name = target.getName() != null ? target.getName() : args[1];
                 messages.send(sender, enable ? "player-transcription-on" : "player-transcription-off", "player", name);
             }
+            case "demo" -> {
+                if (!check(sender, "pvtranscribe.admin.demo")) return true;
+                Player target;
+                int textFrom = 1;
+                if (args.length >= 2 && Bukkit.getPlayerExact(args[1]) != null) {
+                    target = Bukkit.getPlayerExact(args[1]);
+                    textFrom = 2;
+                } else if (sender instanceof Player self) {
+                    target = self;
+                } else {
+                    messages.send(sender, "player-only");
+                    return true;
+                }
+                String text = args.length > textFrom ? ConfigEditor.join(args, textFrom) : messages.text("demo-phrase");
+                plugin.service().demo(target.getUniqueId(), target.getName(), text, 350);
+                messages.send(sender, "demo-started", "player", target.getName());
+            }
             case "get", "config" -> {
                 if (!check(sender, "pvtranscribe.admin.config")) return true;
                 String prefix = args.length >= 2 ? args[1] : "";
@@ -199,6 +216,7 @@ final class PVTranscribeCommand implements TabExecutor {
             if (sender.hasPermission("pvtranscribe.admin.status")) options.add("status");
             if (sender.hasPermission("pvtranscribe.admin.player")) options.add("player");
             if (sender.hasPermission("pvtranscribe.admin.world")) options.add("world");
+            if (sender.hasPermission("pvtranscribe.admin.demo")) options.add("demo");
             if (sender.hasPermission("pvtranscribe.admin.config")) {
                 options.add("get");
                 options.add("set");

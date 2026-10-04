@@ -303,6 +303,47 @@ public final class TranscriptionService implements PVTranscribeApi, VoiceInput {
     }
 
     /**
+     * Demo / preview: shows {@code text} above a player as if they said it, word by word, then as a finished
+     * phrase. Only the subtitles are affected; no API events are fired, so other plugins don't react to it.
+     * Useful for testing styles and taking screenshots without a microphone.
+     */
+    public void demo(@NotNull UUID playerId, @NotNull String playerName, @NotNull String text, long wordDelayMs) {
+        String[] words = text.trim().split("\\s+");
+        long utterance = nextUtteranceId();
+        java.time.Instant started = java.time.Instant.now();
+        for (int i = 1; i <= words.length; i++) {
+            boolean last = i == words.length;
+            String partText = String.join(" ", java.util.Arrays.copyOf(words, i));
+            long delay = wordDelayMs * i;
+            scheduler.schedule(() -> {
+                Transcript transcript = new Transcript(playerId, playerName, 0, utterance, partText, partText, false,
+                        config.transcription().language(), -1, "demo", "demo", started, java.time.Instant.now());
+                subtitles.update(transcript, displayText(transcript));
+            }, delay, TimeUnit.MILLISECONDS);
+            if (last) {
+                scheduler.schedule(() -> {
+                    Transcript transcript = new Transcript(playerId, playerName, 0, utterance, partText, partText, true,
+                            config.transcription().language(), -1, "demo", "demo", started, java.time.Instant.now());
+                    String display = displayText(transcript);
+                    subtitles.update(transcript, display);
+                    BiConsumer<Transcript, String> handler = finalPhraseHandler;
+                    if (handler != null && display != null) platform.syncExecutor().execute(() -> handler.accept(transcript, display));
+                }, delay + wordDelayMs * 2, TimeUnit.MILLISECONDS);
+            }
+        }
+    }
+
+    private String displayText(Transcript transcript) {
+        TranscribeConfig.DisplayText dt = config.displayText();
+        String display = org.lavacast.pvtranscribe.core.text.DisplayTextFormatter.format(
+                transcript.getText(), dt.numbersToDigits(), dt.mathSymbols());
+        if (dt.matchNicknames()) {
+            display = org.lavacast.pvtranscribe.core.text.NicknameMatcher.apply(display, platform.onlinePlayerNames());
+        }
+        return display;
+    }
+
+    /**
      * Ends speech and clears the subtitle of a player, e.g. after death or a world change.
      */
     public void interrupt(@NotNull UUID playerId, @NotNull SpeechEndEvent.Reason reason) {

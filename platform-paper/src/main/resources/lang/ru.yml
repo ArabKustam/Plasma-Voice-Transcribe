@@ -18,10 +18,13 @@ config-usage: "&7Использование: &f/pvt set <параметр> <зн
 config-unknown: "&cНеизвестный параметр {option}. Список: /pvt get"
 config-bad-value: "&cЗначение {value} не подходит для {option}."
 config-set: "&a{option} = &f{value}&a (сохранено в config.yml и применено)"
+demo-phrase: "Ребята, давайте пойдём сегодня в шахту!"
+demo-started: "&aДемо-фраза над {player} (видна игрокам рядом; своё облачко видно от третьего лица, если subtitles.visibility.show-to-self: true)."
 help:
   - "&b/pvt toggle &7- скрыть/показать облачки для себя"
   - "&b/pvt status &7- состояние движка и нагрузки"
   - "&b/pvt reload &7- перезагрузить конфиг"
+  - "&b/pvt demo [игрок] [текст] &7- демо-облачко без микрофона"
   - "&b/pvt get [раздел] &7- показать настройки"
   - "&b/pvt set <параметр> <значение> &7- изменить любую настройку (Tab подсказывает)"
   - "&b/pvt engine <auto|vosk|t-one|deepgram|openai> &7- движок распознавания"

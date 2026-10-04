@@ -36,6 +36,13 @@ public final class Messages {
         sender.sendMessage(prefix + message);
     }
 
+    /**
+     * Colorized text of a message without the prefix.
+     */
+    public @NotNull String text(@NotNull String key) {
+        return messages.getOrDefault(key, key);
+    }
+
     public void raw(@NotNull CommandSender sender, @NotNull String text) {
         sender.sendMessage(prefix + TextUtil.colorize(text));
     }
