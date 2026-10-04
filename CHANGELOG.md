@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.1
+
+- `/vtt help` shows links to GitHub, the author's Discord (arab_kustam) and the Plasmo Voice Discord
+- `website` and author in plugin.yml
+
 ## 1.0.0
 
 First release.

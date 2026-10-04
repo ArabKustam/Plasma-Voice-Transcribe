@@ -123,6 +123,12 @@ Paper, Spigot и Purpur 1.20.2 и новее. Проверено на 1.21.8.
 ./gradlew runServer      # тестовый сервер
 ```
 
+## Поддержка
+
+- Ошибки и идеи: [GitHub Issues](https://github.com/ArabKustam/Plasma-Voice-Transcribe/issues)
+- Автор в Discord: **arab_kustam**
+- Discord Plasmo Voice: https://discord.com/invite/uueEqzwCJJ
+
 ## Лицензия
 
 [MIT](LICENSE). Сторонние компоненты: [THIRD_PARTY.md](THIRD_PARTY.md).

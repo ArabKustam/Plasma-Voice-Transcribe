@@ -159,6 +159,12 @@ No. Audio stays in memory only while it is being recognised. With a cloud engine
 | `voice-*` | Voice chat adapter |
 | `platform-paper` | Bukkit plugin |
 
+## Support
+
+- Bugs and ideas: [GitHub Issues](https://github.com/ArabKustam/Plasma-Voice-Transcribe/issues)
+- Author on Discord: **arab_kustam**
+- Plasmo Voice Discord: https://discord.com/invite/uueEqzwCJJ
+
 ## License
 
 [MIT](LICENSE). Third-party components: [THIRD_PARTY.md](THIRD_PARTY.md).

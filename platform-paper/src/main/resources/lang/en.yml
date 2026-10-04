@@ -31,3 +31,6 @@ help:
   - "&b/vtt language <en|ru|...|auto> &7- recognition language"
   - "&b/vtt player <name> <on|off> &7- transcription of a player"
   - "&b/vtt world <world> <on|off> &7- transcription in a world"
+  - "&7GitHub: &fhttps://github.com/ArabKustam/Plasma-Voice-Transcribe"
+  - "&7Author Discord: &farab_kustam"
+  - "&7Plasmo Voice Discord: &fhttps://discord.com/invite/uueEqzwCJJ"

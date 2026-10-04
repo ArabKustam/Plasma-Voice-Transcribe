@@ -23,6 +23,8 @@
 
 **Requirements:** Paper / Spigot / Purpur 1.20.2–1.21.11, Java 17+, Plasmo Voice **2.1+**. Libraries and the speech model download automatically on first start.
 
+**Links:** [GitHub](https://github.com/ArabKustam/Plasma-Voice-Transcribe) · [Issues](https://github.com/ArabKustam/Plasma-Voice-Transcribe/issues) · Author on Discord: **arab_kustam** · [Plasmo Voice Discord](https://discord.com/invite/uueEqzwCJJ)
+
 ---
 
 # 🇷🇺 Описание на русском
@@ -48,3 +50,5 @@
 - 🔒 Голос не сохраняется на диск
 
 **Требования:** Paper / Spigot / Purpur 1.20.2–1.21.11, Java 17+, Plasmo Voice **2.1+**.
+
+**Ссылки:** [GitHub](https://github.com/ArabKustam/Plasma-Voice-Transcribe) · [Ошибки и идеи](https://github.com/ArabKustam/Plasma-Voice-Transcribe/issues) · Автор в Discord: **arab_kustam** · [Discord Plasmo Voice](https://discord.com/invite/uueEqzwCJJ)
