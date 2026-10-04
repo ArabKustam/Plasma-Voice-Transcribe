@@ -69,6 +69,7 @@ Players talk, and everyone who hears them sees their words in speech bubbles abo
 | `/pvt toggle` | Hide or show bubbles for yourself | `pvtranscribe.command.toggle` (everyone) |
 | `/pvt status` | Engine state, load, dropped audio | `pvtranscribe.admin.status` |
 | `/pvt reload` | Reload config and messages | `pvtranscribe.admin.reload` |
+| `/pvt demo [player] [text]` | Show a demo bubble without a microphone (test styles, take screenshots) | `pvtranscribe.admin.demo` |
 | `/pvt get [section]` | Show settings (API keys are masked) | `pvtranscribe.admin.config` |
 | `/pvt set <option> <value>` | Change **any** config option in game; Tab completes options and values; saved to config.yml | `pvtranscribe.admin.config` |
 | `/pvt engine <auto\|vosk\|t-one\|deepgram\|openai>` | Switch the speech engine live | `pvtranscribe.admin.engine` |

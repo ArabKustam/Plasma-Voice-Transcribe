@@ -70,6 +70,7 @@
 | `/pvt toggle` | Скрыть или показать облачка для себя | `pvtranscribe.command.toggle` (все) |
 | `/pvt status` | Состояние движка, нагрузка, потерянный звук | `pvtranscribe.admin.status` |
 | `/pvt reload` | Перезагрузить конфиг и сообщения | `pvtranscribe.admin.reload` |
+| `/pvt demo [игрок] [текст]` | Демо-облачко без микрофона (проверить стиль, сделать скриншот) | `pvtranscribe.admin.demo` |
 | `/pvt get [раздел]` | Показать настройки (ключи API скрыты) | `pvtranscribe.admin.config` |
 | `/pvt set <параметр> <значение>` | Изменить **любой** параметр конфига прямо в игре; Tab подсказывает параметры и значения; сохраняется в config.yml | `pvtranscribe.admin.config` |
 | `/pvt engine <auto\|vosk\|t-one\|deepgram\|openai>` | Сменить движок на лету | `pvtranscribe.admin.engine` |
