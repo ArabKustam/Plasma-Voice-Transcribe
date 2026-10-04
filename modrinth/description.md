@@ -1,34 +1,57 @@
-# PV-Transcribe
+![Live subtitles](https://raw.githubusercontent.com/ArabKustam/Plasma-Voice-Transcribe/main/docs/images/live-subtitles-en.png)
 
-**See what people say in voice chat.** PV-Transcribe turns [Plasmo Voice](https://modrinth.com/plugin/plasmo-voice) speech into text in real time and shows it as speech bubbles above the speaker's head. The text grows word by word while they talk.
+**PV-Transcribe turns [Plasmo Voice](https://modrinth.com/plugin/plasmo-voice) speech into text in real time** and shows it as speech bubbles above the speaker's head. The text grows word by word while they talk. Players don't need any extra mod or resource pack to see the bubbles.
 
-Players don't need any extra mod or resource pack to see the bubbles.
+*Русское описание ниже.*
 
-## Features
+## ✨ Features
 
-- **Live subtitles.** The text appears while the player is still speaking, not seconds later.
-- **Follows the voice chat.** Only players who can actually hear the speaker see the bubble. Proximity distance, [pv-addon-groups](https://modrinth.com/plugin/pv-addon-groups) and [pv-addon-broadcast](https://modrinth.com/plugin/pv-addon-broadcast) are all taken into account.
-- **Stacked bubbles.** Up to 3 per player: new phrases appear at the head and older ones float up and fade out. Long speech is split into several bubbles.
-- **Your style.** Light, dark, glass or minimal presets, or set your own colors, tail, alignment, padding and size.
-- **Chat copy.** Every finished phrase also goes to the chat of the players who heard it.
-- **Choose your engine.** Switch in game with `/pvt engine`:
-  - **Vosk**: free, runs on your server, 20+ languages
-  - **T-one**: free, runs on your server, Russian
-  - **Deepgram**: cloud, most accurate, punctuation, player names spelled right (free credit for new accounts)
-  - **OpenAI**: cloud, any language, automatic language detection
-- **Smart text.** Online players' nicknames are recognised. In Russian, spoken numbers and math become digits and symbols ("two plus two" → "2 + 2").
-- **Admin tools.** Permissions, per-player and per-world switches, `/pvt status`, English and Russian messages.
-- **Lag-free.** Recognition never runs on the main thread, every speaker is processed independently, and there is built-in overload protection.
-- **Privacy.** Voice is never saved to disk. Cloud engines send audio to the provider only while someone speaks.
+- 🗨️ **Live subtitles.** The text appears while the player is still speaking.
+- 👂 **Follows the voice chat.** Only players who can hear the speaker see the bubble: proximity distance, [pv-addon-groups](https://modrinth.com/plugin/pv-addon-groups) and [pv-addon-broadcast](https://modrinth.com/plugin/pv-addon-broadcast).
+- 📚 **Stacked bubbles.** Up to 3 per player; new phrases at the head, older ones float up and fade out.
+- 🎨 **Your style.** Light, dark, glass or minimal presets, or your own colors, tail, alignment, padding and size.
+- 💬 **Chat copy.** Finished phrases also go to the chat of the players who heard them.
+- 🧠 **Choose your engine.** Switch in game with `/pvt engine`:
+  - **Vosk**: free, local, 20+ languages
+  - **T-one**: free, local, Russian
+  - **Deepgram**: cloud, most accurate, player names spelled right
+  - **OpenAI**: cloud, any language
+- 🔢 **Smart text.** Nicknames of online players are recognised; spoken numbers become digits (2 + 2 = 4).
+- 🛠️ **Admin tools.** Permissions, per-player and per-world switches, live status, English and Russian messages.
+- ⚡ **Lag-free.** Recognition never runs on the main thread, and there is overload protection.
+- 🔒 **Privacy.** Voice is never saved to disk.
 
-## For developers
+![How it works](https://raw.githubusercontent.com/ArabKustam/Plasma-Voice-Transcribe/main/docs/images/how-it-works-en.png)
 
-A voice-chat-independent API: speech start and end, live and final text, phrase triggers ("say *fireball* to cast it"), subtitle filters for moderation, plus Bukkit events. See [GitHub](https://github.com/ArabKustam/Plasma-Voice-Transcribe).
+![Bubble styles](https://raw.githubusercontent.com/ArabKustam/Plasma-Voice-Transcribe/main/docs/images/bubble-styles-en.png)
 
-## Requirements
+## 🧩 For developers
+
+The voice-chat-independent API gives you speech start and end, live and final text, phrase triggers ("say *fireball* to cast it"), moderation filters and Bukkit events. The API is the same as in [SVC-Transcribe](https://modrinth.com/plugin/svc-transcribe), so one plugin works with both voice chats. Docs: [GitHub](https://github.com/ArabKustam/Plasma-Voice-Transcribe#for-developers).
+
+## 📋 Requirements
 
 - Paper / Spigot / Purpur **1.20.2+**, Java 17+
-- **Plasmo Voice 2.1+**
-- Internet on first start: libraries and the speech model are downloaded automatically
+- Plasmo Voice **2.1+**
+- Internet on first start: libraries and the speech model download automatically
 
-Not supported yet: Simple Voice Chat, Folia.
+---
+
+# 🇷🇺 Описание на русском
+
+**PV-Transcribe превращает речь из Plasmo Voice в текст в реальном времени** и показывает её облачками над головой говорящего. Текст растёт по ходу речи, игрокам ничего не нужно устанавливать.
+
+![Живые субтитры](https://raw.githubusercontent.com/ArabKustam/Plasma-Voice-Transcribe/main/docs/images/live-subtitles-ru.png)
+
+- 🗨️ **Живые субтитры**, пока игрок говорит
+- 👂 Облачка видят **только те, кто слышит** говорящего: дальность голоса, [pv-addon-groups](https://modrinth.com/plugin/pv-addon-groups) и [pv-addon-broadcast](https://modrinth.com/plugin/pv-addon-broadcast)
+- 📚 До 3 облачков, копия фраз в чат
+- 🎨 Пресеты и свои цвета, хвостик, выравнивание, размер
+- 🧠 Движки: Vosk и T-one (бесплатно, на сервере), Deepgram и OpenAI (облако, точнее всего)
+- 🔢 Ники игроков и цифры (2 + 2 = 4)
+- 🛠️ Права, отключение для игроков и миров, сообщения на русском (`locale: ru`)
+- 🧩 API для голосовых команд, NPC и квестов
+
+![Как это работает](https://raw.githubusercontent.com/ArabKustam/Plasma-Voice-Transcribe/main/docs/images/how-it-works-ru.png)
+
+Требования: Paper / Spigot / Purpur 1.20.2+, Java 17+, Plasmo Voice **2.1+**.

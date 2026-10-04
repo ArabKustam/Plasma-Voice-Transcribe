@@ -1,43 +1,136 @@
+<div align="center">
+
+<img src="icon.png" width="128" alt="Иконка PV-Transcribe">
+
 # PV-Transcribe
 
-**Распознавание речи из [Plasmo Voice](https://modrinth.com/plugin/plasmo-voice) в реальном времени.** Игрок говорит в голосовой чат, и все, кто его слышит, видят над его головой облачко с его словами. Текст растёт по ходу речи. Другие плагины могут реагировать на сказанное через API.
+**Распознавание речи из [Plasmo Voice](https://modrinth.com/plugin/plasmo-voice) в реальном времени.**
+Игрок говорит, и все, кто его слышит, видят его слова в облачке над головой.
 
-[English version](README.md)
+[![Build](https://github.com/ArabKustam/Plasma-Voice-Transcribe/actions/workflows/build.yml/badge.svg)](https://github.com/ArabKustam/Plasma-Voice-Transcribe/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+![Paper 1.20.2+](https://img.shields.io/badge/Paper%20%2F%20Spigot-1.20.2%2B-brightgreen)
+![Java 17+](https://img.shields.io/badge/Java-17%2B-orange)
+
+[English version](README.md) · [Скачать](https://github.com/ArabKustam/Plasma-Voice-Transcribe/releases) · [Сообщить об ошибке](https://github.com/ArabKustam/Plasma-Voice-Transcribe/issues)
+
+</div>
+
+![Живые субтитры](docs/images/live-subtitles-ru.png)
 
 ## Возможности
 
-- Живые субтитры: текст появляется и обновляется, пока игрок говорит.
-- Облачки сделаны из text display, поэтому игрокам не нужны ни моды, ни ресурспаки.
-- Видимость повторяет Plasmo Voice: облачко видят только те, кто слышит говорящего (дистанция, группы, broadcast).
-- До 3 облачков над игроком, лимит слов в одном облачке, плавное исчезновение, копия фразы в чате.
-- Внешний вид настраивается: пресеты, цвета, хвостик, выравнивание, отступы, размер.
-- Движки: `vosk` (локально, бесплатно), `t-one` (локально, русский), `deepgram` и `openai` (облако, самые точные). Переключаются командой `/pvt engine`.
-- API для разработчиков: начало и конец речи, промежуточный и итоговый текст, триггеры фраз, фильтры субтитров.
-- Нагрузка: распознавание идёт вне основного потока, игроки обрабатываются независимо, старые результаты не перезаписывают новые.
-- Приватность: голос хранится только в памяти на время распознавания и не пишется на диск. Облачные движки отправляют звук провайдеру, пока игрок говорит.
+- **Живые субтитры.** Текст появляется и растёт, пока игрок ещё говорит, а не через несколько секунд.
+- **Работает по правилам голосового чата.** Облачко видят только те, кто реально слышит говорящего: дальность голоса, [pv-addon-groups](https://modrinth.com/plugin/pv-addon-groups) и [pv-addon-broadcast](https://modrinth.com/plugin/pv-addon-broadcast).
+- **Без модов для субтитров.** Облачка сделаны на обычных text display, игрокам нужен только сам Plasmo Voice.
+- **Несколько облачков.** До 3 над игроком: новая фраза появляется у головы, старые поднимаются вверх и плавно исчезают. Длинная речь делится на несколько облачков.
+- **Свой стиль.** Пресеты (light, dark, glass, minimal) или свои цвета фона и текста, хвостик, выравнивание, отступы и размер.
+- **Копия в чат.** Каждая законченная фраза приходит в чат тем, кто её слышал.
+- **Выбор движка распознавания**, переключение прямо в игре:
+
+| Движок | Где работает | Языки | Лучше всего для |
+|---|---|---|---|
+| `vosk` | на сервере, бесплатно | 20+ | Слабых серверов и многих языков |
+| `t-one` | на сервере, бесплатно | русский | Бесплатного и точного русского |
+| `deepgram` | облако, платно (стартовый кредит при регистрации) | много + автоопределение | Максимальной точности, пунктуации, ников |
+| `openai` | облако, платно | любые + автоопределение | Любых языков |
+
+- **Умный текст.** Ники онлайн-игроков узнаются. Числа и арифметика пишутся цифрами и знаками (2 + 2 = 4).
+- **API для разработчиков.** Начало и конец речи, живой и итоговый текст, триггеры фраз, фильтры субтитров, события Bukkit.
+- **Для больших серверов.** Распознавание никогда не идёт в основном потоке, каждый игрок обрабатывается отдельно, есть защита от перегрузки.
+- **Приватность.** Голос не сохраняется на диск. Облачные движки получают звук только пока игрок говорит.
+
+![Как это работает](docs/images/how-it-works-ru.png)
 
 ## Требования
 
-- Paper / Spigot / Purpur **1.20.2+**. Проверено на 1.21.8, собрано под API 1.21.11.
-- Java 17+.
-- Plasmo Voice **2.1+**. Игрокам нужен только мод Plasmo Voice.
-- При первом запуске нужен интернет: сервер скачивает библиотеки, плагин скачивает модель.
+| | |
+|---|---|
+| Сервер | Paper, Spigot или Purpur **1.20.2+**, проверено на 1.21.8 |
+| Java | 17 и новее |
+| Голосовой чат | Plasmo Voice **2.1+** |
+| Игрокам | только мод Plasmo Voice |
+| Первый запуск | нужен интернет: сервер скачает библиотеки, плагин скачает модель распознавания |
 
-Не поддерживаются: Folia, серверы на Fabric/Forge и Simple Voice Chat. Ядро плагина от голосового чата не зависит, адаптер для Simple Voice Chat запланирован.
+## Установка
 
-## Быстрый старт на русском
+1. Установите Plasmo Voice на сервер.
+2. Скачайте `PV-Transcribe-x.y.z.jar` из [Releases](https://github.com/ArabKustam/Plasma-Voice-Transcribe/releases) (или с Modrinth) в `plugins/`.
+3. Запустите сервер. Плагин сам выберет бесплатный локальный движок.
+4. Для русского языка впишите в `plugins/PV-Transcribe/config.yml` строки `locale: ru` и `transcription.language: ru`.
+5. По желанию, для максимальной точности, подключите Deepgram:
+   1. Создайте ключ на [console.deepgram.com](https://console.deepgram.com).
+   2. Впишите его в `engine.deepgram.api-key`.
+   3. Выполните `/pvt reload` и `/pvt engine deepgram`.
+
+## Команды
+
+| Команда | Что делает | Право |
+|---|---|---|
+| `/pvt toggle` | Скрыть или показать облачка для себя | `pvtranscribe.command.toggle` (все) |
+| `/pvt status` | Состояние движка, нагрузка, потерянный звук | `pvtranscribe.admin.status` |
+| `/pvt reload` | Перезагрузить конфиг и сообщения | `pvtranscribe.admin.reload` |
+| `/pvt engine <auto\|vosk\|t-one\|deepgram\|openai>` | Сменить движок на лету | `pvtranscribe.admin.engine` |
+| `/pvt language <код\|auto>` | Язык распознавания, `auto` — автоопределение | `pvtranscribe.admin.engine` |
+| `/pvt player <ник> <on\|off>` | Включить или выключить транскрибацию игрока | `pvtranscribe.admin.player` |
+| `/pvt world <мир> <on\|off>` | Включить или выключить транскрибацию в мире | `pvtranscribe.admin.world` |
+
+Другие права:
+
+| Право | По умолчанию | Значение |
+|---|---|---|
+| `pvtranscribe.see` | все | Видеть облачка |
+| `pvtranscribe.transcribe` | все | Речь игрока распознаётся |
+| `pvtranscribe.admin` | op | Все админские команды |
+
+## Настройка
+
+Все параметры с комментариями есть в [`config.yml`](platform-paper/src/main/resources/config.yml): язык, движок и ключи API, облачка и их вид, кто их видит, тайминги, копия в чат, цифры, ники, миры, производительность и отладка. Тексты сообщений лежат в `plugins/PV-Transcribe/lang/` (английский и русский).
+
+![Стили облачков](docs/images/bubble-styles-ru.png)
 
 ```yaml
-# plugins/PV-Transcribe/config.yml
-locale: ru
-transcription:
-  language: ru
-engine:
-  type: deepgram          # или auto, тогда для русского бесплатный t-one
-  deepgram:
-    api-key: "ключ с console.deepgram.com"
+subtitles:
+  max-bubbles: 3
+  max-words-per-bubble: 10
+  style:
+    preset: dark              # light, dark, glass, minimal
+    background: "#C81E3A8A"   # #AARRGGBB
+    final-format: "&f&l{text}"
+    alignment: center
+    padding: 2
+    scale: 1.2
+    tail:
+      symbol: "▾"
 ```
 
-Затем выполни `/pvt reload`.
+> Фон текста Minecraft рисует только прямоугольным, скруглённые углы возможны только с ресурспаком. Всё остальное работает на обычном клиенте.
 
-Команды, права, настройки и API описаны в [README.md](README.md), все параметры с комментариями есть в `config.yml`.
+## Для разработчиков
+
+У PV-Transcribe и [SVC-Transcribe](https://github.com/ArabKustam/Simple-Voice-Chat-Transcribe) (Simple Voice Chat) общий API, поэтому ваш плагин работает с любым голосовым чатом без изменений. Подключите jar плагина как `compileOnly` и добавьте `softdepend: [PV-Transcribe, SVC-Transcribe]` в `plugin.yml`. Пример кода есть в [английском README](README.md#for-developers).
+
+## Частые вопросы
+
+**Для каких версий?**
+Paper, Spigot и Purpur 1.20.2 и новее. Проверено на 1.21.8.
+
+**Работает ли с Simple Voice Chat?**
+Для него есть отдельный плагин [SVC-Transcribe](https://github.com/ArabKustam/Simple-Voice-Chat-Transcribe). Ставьте только один из двух.
+
+**Насколько точно?**
+Зависит от движка. Deepgram самый точный: ники, пунктуация, цифры. T-one — хороший бесплатный вариант для русского. Vosk самый лёгкий, но иногда заменяет редкие слова на похожие частые.
+
+**Записывается ли голос?**
+Нет. Звук хранится только в памяти, пока распознаётся. С облачным движком звук отправляется провайдеру, пока игрок говорит, и об этом стоит предупредить игроков.
+
+## Сборка
+
+```
+./gradlew build          # jar в build/libs/
+./gradlew runServer      # тестовый сервер
+```
+
+## Лицензия
+
+[MIT](LICENSE). Сторонние компоненты: [THIRD_PARTY.md](THIRD_PARTY.md).
