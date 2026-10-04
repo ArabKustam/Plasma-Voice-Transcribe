@@ -1,46 +1,35 @@
 <div align="center">
 
-<img src="icon.png" width="128" alt="PV-Transcribe icon">
+<img src="docs/images/banner-en.png" alt="PV-Transcribe">
 
-# PV-Transcribe
+[Releases](https://github.com/ArabKustam/Plasma-Voice-Transcribe/releases) | [Modrinth](https://modrinth.com/plugin/pv-transcribe) | [Documentation](#configuration) | [API](#for-developers) | [Report a bug](https://github.com/ArabKustam/Plasma-Voice-Transcribe/issues) | [Русский](README.ru.md)
 
-**Real-time speech-to-text for [Plasmo Voice](https://modrinth.com/plugin/plasmo-voice).**
-Players talk, and everyone who hears them sees their words in speech bubbles above their head.
-
+[![Release](https://img.shields.io/github/v/release/ArabKustam/Plasma-Voice-Transcribe?label=release)](https://github.com/ArabKustam/Plasma-Voice-Transcribe/releases)
 [![Build](https://github.com/ArabKustam/Plasma-Voice-Transcribe/actions/workflows/build.yml/badge.svg)](https://github.com/ArabKustam/Plasma-Voice-Transcribe/actions)
+![Paper 1.20.2+](https://img.shields.io/badge/Paper%20%2F%20Spigot-1.20.2%E2%80%931.21.11-brightgreen)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-![Paper 1.20.2+](https://img.shields.io/badge/Paper%20%2F%20Spigot-1.20.2%2B-brightgreen)
-![Java 17+](https://img.shields.io/badge/Java-17%2B-orange)
-
-[Русская версия](README.ru.md) · [Download](https://github.com/ArabKustam/Plasma-Voice-Transcribe/releases) · [Report a bug](https://github.com/ArabKustam/Plasma-Voice-Transcribe/issues)
 
 </div>
 
-![Live subtitles](docs/images/live-subtitles-en.png)
+## See what people say in voice chat
+
+Players talk in [Plasmo Voice](https://modrinth.com/plugin/plasmo-voice), and everyone who can hear them sees their words above their head. The text grows word by word while they speak. Players don't need any extra mod or resource pack.
+
+<p align="center"><img src="docs/images/live-demo-en.gif" alt="Live subtitles" width="760"></p>
 
 ## Features
 
-- **Live subtitles.** The text appears and grows while the player is still speaking, not seconds after.
-- **Follows the voice chat.** A bubble is shown only to players who can actually hear the speaker: proximity distance, [pv-addon-groups](https://modrinth.com/plugin/pv-addon-groups) and [pv-addon-broadcast](https://modrinth.com/plugin/pv-addon-broadcast).
-- **No client mods.** Bubbles are vanilla text displays. Players only need Plasmo Voice itself.
-- **Stacked bubbles.** Up to 3 per player: new phrases appear at the head, older ones float up and fade out. Long speech is split into several bubbles.
-- **Your style.** Presets (light, dark, glass, minimal) or your own background, text colors, tail, alignment, padding and size.
-- **Chat copy.** Every finished phrase also goes to the chat of the players who heard it.
-- **Choice of speech engine**, switchable in game:
+![Live subtitles](docs/images/panel-1-en.png)
 
-| Engine | Runs | Languages | Best for |
-|---|---|---|---|
-| `vosk` | on your server, free | 20+ | Light servers, many languages |
-| `t-one` | on your server, free | Russian | Free and accurate Russian |
-| `deepgram` | cloud, paid (free credit for new accounts) | many + auto-detect | Best accuracy, punctuation, player names |
-| `openai` | cloud, paid | any + auto-detect | Any language |
+<p align="center"><img src="docs/images/conversation-en.gif" alt="Two players talking" width="860"></p>
 
-- **Smart text.** Online players' nicknames are recognised. In Russian, spoken numbers and math become digits and symbols (2 + 2 = 4).
-- **Developer API.** Speech start and end, live and final text, phrase triggers, subtitle filters, Bukkit events.
-- **Built for busy servers.** Recognition never runs on the main thread, every speaker is processed independently, and there is overload protection.
-- **Privacy.** Voice is never saved to disk. Cloud engines receive audio only while someone speaks.
+![Bubble styles](docs/images/panel-2-en.png)
 
-![Several speakers and chat copy](docs/images/speakers-chat-en.png)
+![Speech engines](docs/images/panel-3-en.png)
+
+![For developers](docs/images/panel-4-en.png)
+
+Bubbles are shown only to players who can hear the speaker: proximity distance, [pv-addon-groups](https://modrinth.com/plugin/pv-addon-groups) and [pv-addon-broadcast](https://modrinth.com/plugin/pv-addon-broadcast).
 
 ![How it works](docs/images/how-it-works-en.png)
 
@@ -90,10 +79,6 @@ More permissions:
 ## Configuration
 
 Settings can be changed in two ways: edit [`config.yml`](platform-paper/src/main/resources/config.yml) and run `/vtt reload`, or change them in game with `/vtt set <option> <value>`, for example `/vtt set subtitles.style.preset dark`. Every option is documented in the config: language, engine and API keys, bubbles and their look, who sees them, timings, chat copy, number formatting, nickname matching, worlds, performance and debugging. Messages are in `plugins/PV-Transcribe/lang/` (English and Russian).
-
-![Bubble styles](docs/images/bubble-styles-en.png)
-
-![Stacked bubbles](docs/images/stacked-bubbles-en.png)
 
 ```yaml
 subtitles:
